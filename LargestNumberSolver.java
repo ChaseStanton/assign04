@@ -6,14 +6,14 @@ import java.util.List;
 
 public class LargestNumberSolver {
 	public static <T> void insertionSort(T[] arr, Comparator<? super T> cmp) {
-		@SuppressWarnings("unchecked")
-		T[] temp = (T[]) new Object[arr.length];
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = i + 1; j < arr.length; j++) {
-				if (cmp.compare(arr[i], arr[j]) < 1)
-					temp[i] = arr[j];
+		for (int i = 1; i < arr.length; i++) {
+			T item = arr[i];
+			int j;
+			for (j = i - 1; j >= 0 && cmp.compare(arr[j], item) > 0; j--) {
+				arr[j + 1] = arr[j];
 
 			}
+			arr[j + 1] = item;
 		}
 
 	}
@@ -42,19 +42,16 @@ public class LargestNumberSolver {
 
 	}
 
-	class customComparator<T> implements Comparator<T> {
+	protected class customComparator<T> implements Comparator<T> {
 		public int compare(T o1, T o2) {
-			StringBuilder bigNumber1 = new StringBuilder();
-			bigNumber1.append(o1);
-			bigNumber1.append(o2);
-			String num = bigNumber1.toString();
-			int firstValue = Integer.parseInt(num);
-			StringBuilder bigNumber2 = new StringBuilder();
-			bigNumber2.append(o2);
-			bigNumber2.append(o1);
-			String num2 = bigNumber2.toString();
-			int secondValue = Integer.parseInt(num2);
-			return firstValue - secondValue;
+			String str1 = o1.toString() + o2.toString();
+			String str2 = o2.toString() + o1.toString();
+			Integer num1 = Integer.parseInt(str1);
+			Integer num2 = Integer.parseInt(str2);
+			return num1.compareTo(num2);
+
+		
+
 
 		}
 	};
