@@ -68,7 +68,7 @@ public class LargestNumberSolver {
 
 	}
 
-	protected class customComparator<T> implements Comparator<T> {
+	protected static class customComparator<T> implements Comparator<T> {
 		public int compare(T o1, T o2) {
 			String str1 = o1.toString() + o2.toString();
 			String str2 = o2.toString() + o1.toString();
