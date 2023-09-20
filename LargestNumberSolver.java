@@ -67,9 +67,9 @@ public class LargestNumberSolver {
 		if(k < 0 || k >= list.size()){
 			throw new IllegalArgumentException("Kth value is too large or small for the given arrays");
 		}
-		Integer[] sortedList = new Integer[list.size()];
+		Integer[][] sortedList = new Integer[list.size()][];
 		for(int i = 0; i < list.size(); i++){
-			sortedList[i] = findLargestInt(list.get(i));
+			sortedList[i] = list.get(i);
 		}
 		
 		insertionSort(sortedList, new KthIntegerComparator());
@@ -91,9 +91,11 @@ public class LargestNumberSolver {
 				return num2 - num1;
 		}
 	};
-	protected static class KthIntegerComparator implements Comparator<Integer> {
-		public int compare(Integer o1, Integer o2) {
-			return o2-o1;
+	protected static class KthIntegerComparator implements Comparator<Integer[]> {
+		public int compare(Integer[] o1, Integer[] o2) {
+			BigInteger num1 = findLargestNumber(o1);
+			BigInteger num2 = findLargestNumber(o2);
+			return num2.compareTo(num1);
 		}
 	};
 }
