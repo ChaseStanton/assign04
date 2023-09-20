@@ -19,16 +19,42 @@ public class LargestNumberSolver {
 	}
 
 	public static BigInteger findLargestNumber(Integer[] arr) {
+		if (arr == null || arr.length == 0) {
+            return BigInteger.ZERO; // Return 0 for empty array
+        }
 
+        // Use custom comparator to sort the array in descending order of concatenated values
+        insertionSort(arr, new customComparator<Integer>());
+
+        StringBuilder result = new StringBuilder();
+        for (Integer num : arr) {
+            result.append(num);
+        }
+
+        return new BigInteger(result.toString());
+    }
+
+
+
+	public static int findLargestInt(Integer[] arr) throws Exception {
+		BigInteger largestNumber = findLargestNumber(arr);
+        
+        if (largestNumber.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0) {
+            throw new Exception("Largest number exceeds int range");
+        }
+
+        return largestNumber.intValue();
 	}
 
-	public static int findLargestInt(Integer[] arr) throws OutOfRangeException {
+	public static long findLargestLong(Integer[] arr) throws Exception {
+		BigInteger largestNumber = findLargestNumber(arr);
+        
+        if (largestNumber.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+            throw new Exception("Largest number exceeds long range");
+        }
 
-	}
-
-	public static long findLargestLong(Integer[] arr) throws OutOfRangeException {
-
-	}
+        return largestNumber.longValue();
+    }
 
 	public static BigInteger sum(List<Integer[]> list) {
 
