@@ -12,7 +12,7 @@ public class LargestNumberSolver {
 			for (j = i - 1; j >= 0 && cmp.compare(arr[j], item) > 0; j--) {
 				arr[j + 1] = arr[j];
 
-			}
+			} 
 			arr[j + 1] = item;
 		}
 
