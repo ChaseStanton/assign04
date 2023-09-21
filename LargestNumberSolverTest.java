@@ -3,6 +3,7 @@ package assign04;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Comparator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -53,6 +54,20 @@ class LargestNumberSolverTest {
 	void findLargestLong() throws Exception{
 		long actual = 54321;
 		assertEquals(actual, LargestNumberSolver.findLargestLong(findLargestNumberArr));
+	}
+	@Test
+	void findKthLarges() {
+		Integer[] arr1 = new Integer[] {9, 8, 7};
+		Integer[] arr2 = new Integer[] {5, 4, 3};
+		Integer[] arr3 = new Integer[] {1, 1, 1};
+		ArrayList<Integer[]> arrList = new ArrayList<>();
+		arrList.add(arr1);
+		arrList.add(arr2);
+		arrList.add(arr3);
+		Integer[] result = LargestNumberSolver.findKthLargest(arrList, 0);
+		assertArrayEquals(arr1, result);
+
+
 	}
 
 }
