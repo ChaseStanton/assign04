@@ -40,6 +40,8 @@ public class LargestNumberSolver {
 	}
 
 	public static int findLargestInt(Integer[] arr) throws OutOfRangeException {
+		if(arr.length == 0)
+			return 0;
 		BigInteger largestNumber = findLargestNumber(arr);
 
 		if (largestNumber.compareTo(BigInteger.valueOf(Integer.MAX_VALUE)) > 0) {
@@ -50,6 +52,8 @@ public class LargestNumberSolver {
 	}
 
 	public static long findLargestLong(Integer[] arr) throws OutOfRangeException {
+		if(arr.length == 0)
+			return 0;
 		BigInteger largestNumber = findLargestNumber(arr);
 
 		if (largestNumber.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
@@ -60,9 +64,11 @@ public class LargestNumberSolver {
 	}
 
 	public static BigInteger sum(List<Integer[]> list) {
+		if(list.size() == 0)
+			return BigInteger.ZERO;
 		BigInteger sum = new BigInteger("0");
 		for(Integer[] intArr: list){
-			sum.add(findLargestNumber(intArr));
+			sum = sum.add(findLargestNumber(intArr));
 		}
 		return sum;
 	}
