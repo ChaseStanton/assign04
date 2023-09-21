@@ -166,5 +166,22 @@ class LargestNumberSolverTest {
 		assertArrayEquals(actualArr2, expectedArr2);
 
 	}
+	@Test
+	void fileFindKthLargestTest() {
+		List<Integer[]> smallFile = LargestNumberSolver.readFile("src/assign04/simple_int_file.txt");
+		Integer[] firstValue = new Integer[] {6, 7, 8, 9, 10};
+		Integer[] smallFileResult = LargestNumberSolver.findKthLargest(smallFile, 0);
+		assertArrayEquals(firstValue, smallFileResult);
+
+	}
+	@Test void findKthLargestTestExpection() throws IllegalArgumentException {
+		List<Integer[]> smallFile = LargestNumberSolver.readFile("src/assign04/simple_int_file.txt");
+		assertThrows(IllegalArgumentException.class, () -> {
+			LargestNumberSolver.findKthLargest(smallFile, -1);
+		});
+		assertThrows(IllegalArgumentException.class, () -> {
+			LargestNumberSolver.findKthLargest(smallFile, 2);
+		});
+	}
 
 }
