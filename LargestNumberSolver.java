@@ -29,10 +29,14 @@ public class LargestNumberSolver {
 
 		// Use custom comparator to sort the array in descending order of concatenated
 		// values
-		insertionSort(o1, new IntegerComparator<Integer>());
+		Integer[] copiedArr = new Integer[o1.length];
+		for(int i = 0; i < o1.length; i++)
+			copiedArr[i] = o1[i];
+			
+		insertionSort(copiedArr, new IntegerComparator<Integer>());
 
 		StringBuilder result = new StringBuilder();
-		for (Integer num : o1) {
+		for (Integer num : copiedArr) {
 			result.append(num);
 		}
 

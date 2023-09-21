@@ -115,12 +115,27 @@ class LargestNumberSolverTest {
 
 	}
 	@Test
-	void sum() {
+	void sumTest() {
 	
-
 	BigInteger expected = new BigInteger("1641");
 	BigInteger result = LargestNumberSolver.sum(arrList);
 	assertEquals(expected, result);
+	}
+	@Test
+	void smallListFindKthLargestTest() {
+		ArrayList<Integer[]> smallList = new ArrayList<>();
+		Integer[] smallArr1 = new Integer[] {6};
+		Integer[] smallArr2 = new Integer[] {4};
+		Integer[] smallArr3 = new Integer[] {1};
+		Integer[] smallArr4 = new Integer[] {93};
+		smallList.add(smallArr4);
+		smallList.add(smallArr1);
+		smallList.add(smallArr3);
+		smallList.add(smallArr2);
+		Integer[] result = LargestNumberSolver.findKthLargest(smallList, 0);
+		assertEquals(smallArr4, result);
+
+
 	}
 
 }
