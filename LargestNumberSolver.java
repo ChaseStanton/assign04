@@ -1,6 +1,10 @@
 package assign04;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -77,7 +81,25 @@ public class LargestNumberSolver {
 	}
 
 	public static List<Integer[]> readFile(String filename) {
+		List<Integer[]> resultList = new ArrayList<>();
 
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] elements = line.trim().split("\\s+"); 
+                Integer[] intArray = new Integer[elements.length];
+
+                for (int i = 0; i < elements.length; i++) {
+                    intArray[i] = Integer.parseInt(elements[i]);
+                }
+
+                resultList.add(intArray);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return resultList;
 	}
 
 	protected static class IntegerComparator<T> implements Comparator<T> {
