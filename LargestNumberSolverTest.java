@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -135,6 +136,34 @@ class LargestNumberSolverTest {
 		Integer[] result = LargestNumberSolver.findKthLargest(smallList, 0);
 		assertEquals(smallArr4, result);
 
+
+	}
+	
+	@Test
+	void emptyReadFileTest() {
+		List<Integer[]> emptyList = new ArrayList<>();
+		List<Integer[]> result = LargestNumberSolver.readFile("abcde.txt");
+		assertTrue(emptyList.equals(result));
+		
+	}
+	@Test
+	void readFileTest() {
+		List<Integer[]> emptyList = new ArrayList<>();
+		List<Integer[]> result = LargestNumberSolver.readFile("src/assign04/ints.txt");
+		assertFalse(result.equals(emptyList));
+		Integer[] line1 = new Integer[] {1, 2, 3, 4, 5};
+		Integer[] line2 = new Integer[] {6, 7, 8, 9, 10};
+		List<Integer[]> smallFileListExpected = new ArrayList<>();
+		smallFileListExpected.add(line1);
+		smallFileListExpected.add(line2);
+		List<Integer[]> smallFileListActual = LargestNumberSolver.readFile("src/assign04/simple_int_file.txt");
+		Integer[] actualArr1 = smallFileListActual.get(0);
+		Integer[] actualArr2 = smallFileListActual.get(1);
+		Integer[] expectedArr1 = smallFileListExpected.get(0);
+		Integer[] expectedArr2 = smallFileListExpected.get(1);
+
+		assertArrayEquals(actualArr1, expectedArr1);
+		assertArrayEquals(actualArr2, expectedArr2);
 
 	}
 
