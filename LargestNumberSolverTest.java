@@ -19,14 +19,14 @@ class LargestNumberSolverTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		arr =  new Integer[] { 1, 2, 3, 11, 49, 91, 9};
-		sortedArr = new Integer[] {9, 91, 49, 3, 2, 11, 1};
-		findLargestNumberArr = new Integer[] {1 , 2 , 3 , 4 , 5};
+		arr = new Integer[] { 1, 2, 3, 11, 49, 91, 9 };
+		sortedArr = new Integer[] { 9, 91, 49, 3, 2, 11, 1 };
+		findLargestNumberArr = new Integer[] { 1, 2, 3, 4, 5 };
 		arrList = new ArrayList<>();
 		empty = new Integer[0];
-		arr1 = new Integer[] {9, 8, 7};
-		arr2 = new Integer[] {5, 4, 3};
-		arr3 = new Integer[] {1, 1, 1};
+		arr1 = new Integer[] { 9, 8, 7 };
+		arr2 = new Integer[] { 5, 4, 3 };
+		arr3 = new Integer[] { 1, 1, 1 };
 		arrList.add(arr1);
 		arrList.add(arr2);
 		arrList.add(arr3);
@@ -37,53 +37,58 @@ class LargestNumberSolverTest {
 				String str2 = o2.toString() + o1.toString();
 				Integer num1 = Integer.parseInt(str1);
 				Integer num2 = Integer.parseInt(str2);
-				if(num2 - num1 == 0)
+				if (num2 - num1 == 0)
 					return o2 - o1;
 				return num2 - num1;
 			}
 		};
 
 	};
-	
-	
+
 	@Test
-	void emptyFindLargestNumberTest()  {
+	void emptyFindLargestNumberTest() {
 		assertEquals(BigInteger.ZERO, LargestNumberSolver.findLargestNumber(empty));
 	}
+
 	@Test
-	void emptyFindLargestIntTest()  {
+	void emptyFindLargestIntTest() {
 		assertEquals(0, LargestNumberSolver.findLargestInt(empty));
 
 	}
+
 	@Test
-	void emptyFindLargestLongTest()  {
+	void emptyFindLargestLongTest() {
 		assertEquals(0, LargestNumberSolver.findLargestLong(empty));
 	}
+
 	@Test
-	void tooLargeIntTest() throws OutOfRangeException{
-		Integer[] longArr = new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, };
+	void tooLargeIntTest() throws OutOfRangeException {
+		Integer[] longArr = new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, };
 		assertThrows(OutOfRangeException.class, () -> {
 			LargestNumberSolver.findLargestInt(longArr);
 		});
 	}
+
 	@Test
-	void tooLargeLongTest() throws OutOfRangeException{
-		Integer[] bigIntArr = new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
+	void tooLargeLongTest() throws OutOfRangeException {
+		Integer[] bigIntArr = new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
 		assertThrows(OutOfRangeException.class, () -> {
 			LargestNumberSolver.findLargestLong(bigIntArr);
 		});
 	}
+
 	@Test
 	void validNumberFindLargestInt() {
-		Integer[] intArr = new Integer[] {1};
+		Integer[] intArr = new Integer[] { 1 };
 		assertEquals(1, LargestNumberSolver.findLargestInt(intArr));
 	}
+
 	@Test
 	void validNumberFindLargestLong() {
-		Integer[] validLongArr = new Integer[] {10,000000000000000000};
-		assertEquals(10,000000000000000000, LargestNumberSolver.findLargestInt(validLongArr));
+		Integer[] validLongArr = new Integer[] { 10, 000000000000000000 };
+		assertEquals(10, 000000000000000000, LargestNumberSolver.findLargestInt(validLongArr));
 	}
-	
+
 	@Test
 	void insertionSortTest() {
 		LargestNumberSolver.insertionSort(arr, custom);
@@ -91,44 +96,46 @@ class LargestNumberSolverTest {
 	}
 
 	@Test
-	void findLargestNumberTest(){
+	void findLargestNumberTest() {
 		BigInteger actual = new BigInteger("54321");
 		assertEquals(actual, LargestNumberSolver.findLargestNumber(findLargestNumberArr));
 	}
 
 	@Test
-	void findLargestInt() throws Exception{
+	void findLargestInt() throws Exception {
 		int actual = 54321;
 		assertEquals(actual, LargestNumberSolver.findLargestInt(findLargestNumberArr));
 	}
-	
+
 	@Test
-	void findLargestLong() throws Exception{
+	void findLargestLong() throws Exception {
 		long actual = 54321;
 		assertEquals(actual, LargestNumberSolver.findLargestLong(findLargestNumberArr));
 	}
+
 	@Test
 	void findKthLarges() {
-		
+
 		Integer[] result = LargestNumberSolver.findKthLargest(arrList, 0);
 		assertArrayEquals(arr1, result);
 
-
 	}
+
 	@Test
 	void sumTest() {
-	
-	BigInteger expected = new BigInteger("1641");
-	BigInteger result = LargestNumberSolver.sum(arrList);
-	assertEquals(expected, result);
+
+		BigInteger expected = new BigInteger("1641");
+		BigInteger result = LargestNumberSolver.sum(arrList);
+		assertEquals(expected, result);
 	}
+
 	@Test
 	void smallListFindKthLargestTest() {
 		ArrayList<Integer[]> smallList = new ArrayList<>();
-		Integer[] smallArr1 = new Integer[] {6};
-		Integer[] smallArr2 = new Integer[] {4};
-		Integer[] smallArr3 = new Integer[] {1};
-		Integer[] smallArr4 = new Integer[] {93};
+		Integer[] smallArr1 = new Integer[] { 6 };
+		Integer[] smallArr2 = new Integer[] { 4 };
+		Integer[] smallArr3 = new Integer[] { 1 };
+		Integer[] smallArr4 = new Integer[] { 93 };
 		smallList.add(smallArr4);
 		smallList.add(smallArr1);
 		smallList.add(smallArr3);
@@ -136,23 +143,23 @@ class LargestNumberSolverTest {
 		Integer[] result = LargestNumberSolver.findKthLargest(smallList, 0);
 		assertEquals(smallArr4, result);
 
-
 	}
-	
+
 	@Test
 	void emptyReadFileTest() {
 		List<Integer[]> emptyList = new ArrayList<>();
 		List<Integer[]> result = LargestNumberSolver.readFile("abcde.txt");
 		assertTrue(emptyList.equals(result));
-		
+
 	}
+
 	@Test
 	void readFileTest() {
 		List<Integer[]> emptyList = new ArrayList<>();
 		List<Integer[]> result = LargestNumberSolver.readFile("src/assign04/ints.txt");
 		assertFalse(result.equals(emptyList));
-		Integer[] line1 = new Integer[] {1, 2, 3, 4, 5};
-		Integer[] line2 = new Integer[] {6, 7, 8, 9, 10};
+		Integer[] line1 = new Integer[] { 1, 2, 3, 4, 5 };
+		Integer[] line2 = new Integer[] { 6, 7, 8, 9, 10 };
 		List<Integer[]> smallFileListExpected = new ArrayList<>();
 		smallFileListExpected.add(line1);
 		smallFileListExpected.add(line2);
@@ -166,15 +173,18 @@ class LargestNumberSolverTest {
 		assertArrayEquals(actualArr2, expectedArr2);
 
 	}
+
 	@Test
 	void fileFindKthLargestTest() {
 		List<Integer[]> smallFile = LargestNumberSolver.readFile("src/assign04/simple_int_file.txt");
-		Integer[] firstValue = new Integer[] {6, 7, 8, 9, 10};
+		Integer[] firstValue = new Integer[] { 6, 7, 8, 9, 10 };
 		Integer[] smallFileResult = LargestNumberSolver.findKthLargest(smallFile, 0);
 		assertArrayEquals(firstValue, smallFileResult);
 
 	}
-	@Test void findKthLargestTestExpection() throws IllegalArgumentException {
+
+	@Test
+	void findKthLargestTestExpection() throws IllegalArgumentException {
 		List<Integer[]> smallFile = LargestNumberSolver.readFile("src/assign04/simple_int_file.txt");
 		assertThrows(IllegalArgumentException.class, () -> {
 			LargestNumberSolver.findKthLargest(smallFile, -1);
@@ -182,6 +192,62 @@ class LargestNumberSolverTest {
 		assertThrows(IllegalArgumentException.class, () -> {
 			LargestNumberSolver.findKthLargest(smallFile, 2);
 		});
+	}
+
+	@Test
+	void sumEmptyListTest() {
+		List<Integer[]> emptyList = new ArrayList<>();
+		BigInteger result = LargestNumberSolver.sum(emptyList);
+		assertEquals(BigInteger.ZERO, result);
+	}
+
+	@Test
+	void sumSingleElementListTest() {
+		List<Integer[]> singleElementList = new ArrayList<>();
+		singleElementList.add(new Integer[] { 42 });
+		BigInteger result = LargestNumberSolver.sum(singleElementList);
+		assertEquals(new BigInteger("42"), result);
+	}
+
+	@Test
+	void findKthLargestWithEmptyList() {
+		List<Integer[]> emptyList = new ArrayList<>();
+		assertThrows(IllegalArgumentException.class, () -> {
+			LargestNumberSolver.findKthLargest(emptyList, 0);
+		});
+	}
+
+	@Test
+	void readFileWithInvalidFileName() {
+		List<Integer[]> result = LargestNumberSolver.readFile("nonexistentfile.txt");
+		assertTrue(result.isEmpty());
+	}
+
+	@Test
+	void readFileWithEmptyFile() {
+		List<Integer[]> result = LargestNumberSolver.readFile("src/assign04/empty_file.txt");
+		assertTrue(result.isEmpty());
+	}
+
+	@Test
+	void findKthLargestWithKEqualToListSize() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			LargestNumberSolver.findKthLargest(arrList, 3);
+		});
+	}
+
+	@Test
+	void findKthLargestWithKGreaterThanListSize() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			LargestNumberSolver.findKthLargest(arrList, 4);
+		});
+	}
+
+	@Test
+	void findKthLargestWithKEqualToListSizeMinusOne() {
+		Integer[] expectedResult = new Integer[] { 1, 1, 1 };
+		Integer[] result = LargestNumberSolver.findKthLargest(arrList, 2);
+		assertArrayEquals(expectedResult, result);
 	}
 
 }
