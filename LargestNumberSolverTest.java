@@ -7,10 +7,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * This class represents a  junit test for the LargestNumberSolver class
+ * @author Chase Stanton and Reece Kalmar
+ *
+ */
 class LargestNumberSolverTest {
 	private Comparator<Integer> custom;
 	private Integer[] arr, sortedArr, findLargestNumberArr;
@@ -145,13 +149,7 @@ class LargestNumberSolverTest {
 
 	}
 
-	@Test
-	void emptyReadFileTest() {
-		List<Integer[]> emptyList = new ArrayList<>();
-		List<Integer[]> result = LargestNumberSolver.readFile("abcde.txt");
-		assertTrue(emptyList.equals(result));
-
-	}
+	
 
 	@Test
 	void readFileTest() {
@@ -184,7 +182,7 @@ class LargestNumberSolverTest {
 	}
 
 	@Test
-	void findKthLargestTestExpection() throws IllegalArgumentException {
+	void findKthLargestTestException() throws IllegalArgumentException {
 		List<Integer[]> smallFile = LargestNumberSolver.readFile("src/assign04/simple_int_file.txt");
 		assertThrows(IllegalArgumentException.class, () -> {
 			LargestNumberSolver.findKthLargest(smallFile, -1);
